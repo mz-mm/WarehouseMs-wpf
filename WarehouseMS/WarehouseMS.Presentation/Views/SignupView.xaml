@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="WarehouseMS.Presentation.Views.SignupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WarehouseMS.Presentation.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="1024" d:DesignWidth="1440">
+    <Grid >
+        <StackPanel Width="300" VerticalAlignment="Center">
+            <Label FontFamily="{StaticResource InterFont}" Foreground="Black" FontSize="32" HorizontalAlignment="Center" Margin="0 0 0 -2">Sign up</Label>
+            <TextBlock FontFamily="{StaticResource InterFont}" TextWrapping="Wrap" TextAlignment="Center" Foreground="Black" FontSize="18" HorizontalAlignment="Center" Margin="0 0 0 24">Enter your credentials to create your account</TextBlock>
+
+            <Label Content="{Binding Error}" Visibility="{Binding ErrorVisibility}" Foreground="LightCoral" Margin="0 0 0 6"/>
+
+            <Grid Margin="0 0 0 12">
+                <TextBox Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" x:Name="FirstNameTextBox" ></TextBox>
+                <TextBlock IsHitTestVisible="False" Text="First Name" FontFamily="{StaticResource InterFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=FirstNameTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <Grid Margin="0 0 0 12">
+                <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" x:Name="LastNameTextBox" ></TextBox>
+                <TextBlock IsHitTestVisible="False" Text="Last Name" FontFamily="{StaticResource InterFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=LastNameTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <Grid Margin="0 0 0 12">
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" x:Name="EmailTextBox" ></TextBox>
+                <TextBlock IsHitTestVisible="False" Text="Email" FontFamily="{StaticResource InterFont}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=EmailTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+
+            <Grid Margin="0 0 0 12">
+                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordBox"/>
+                <Label VerticalAlignment="Center" x:Name="PasswordPlaceholderLabel" FontFamily="{StaticResource InterFont}" Content="Password" Foreground="DarkGray" IsHitTestVisible="False" Margin="14 0 0 0 "/>
+            </Grid>
+
+            <Grid Margin="0 0 0 12">
+                <PasswordBox PasswordChanged="ConfirmPasswordBox_PasswordChanged" x:Name="ConfirmPasswordBox"/>
+                <Label VerticalAlignment="Center" x:Name="ConfirmPasswordPlaceholderLabel" FontFamily="{StaticResource InterFont}" Content="Confirm Password" Foreground="DarkGray" IsHitTestVisible="False" Margin="14 0 0 0 "/>
+            </Grid>
+
+            <Button Command="{Binding Signup}" Style="{StaticResource {x:Type Button}}" FontFamily="{StaticResource InterFont}" Margin="0 0 0 24" Width="300" Background="#1199FF">Continue</Button>
+
+            <Border Height="1" Background="#242222" Margin="0 0 0 12"></Border>
+
+            <Button Command="{Binding LoginCommand}"  Background="Transparent" BorderBrush="Transparent" FontSize="12" FontFamily="{StaticResource InterFont}"  HorizontalAlignment="Center" Margin="0 0 0 14">Already a member? Login</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
